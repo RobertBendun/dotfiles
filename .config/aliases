@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Add verbosity to commands
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+
+# Add colors
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+
+# Add alternatives for builtins
+alias ..="cd .."
+alias ...="cd ../.."
+alias ls="exa -ahl --color=always --group-directories-first"
+alias sudo="doas --"
+alias vi="vim"
+alias v="vim"
+
+# Dotfiles repository helper
+alias config='/usr/bin/git --git-dir=$HOME/downloads/dotfiles/ --work-tree=$HOME'
