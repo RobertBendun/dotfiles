@@ -19,3 +19,4 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 
+[[ $(fgconsole 2> /dev/null) == 1 ]] && exec startx -- vt1

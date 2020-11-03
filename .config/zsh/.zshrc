@@ -22,7 +22,7 @@ compinit
 _comp_options+=(globdots) # include hidden files
 
 # Show execution time of last command
-if ! command -v pptimediff; then
+if ! command -v pptimediff > /dev/null; then
 	echo Compiling pptimediff. This should not happened!!!
 	cc $HOME/.config/pptimediff.c -o $HOME/.local/bin/pptimediff
 fi
@@ -46,5 +46,4 @@ source $HOME/downloads/fast-syntax-highlighting/fast-syntax-highlighting.plugin.
 
 add-zsh-hook preexec command-start-hook
 add-zsh-hook precmd command-end-hook
-
 
