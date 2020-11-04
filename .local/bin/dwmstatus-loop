@@ -1,0 +1,6 @@
+#!/bin/sh
+
+while :; do
+	dwmstatus
+	sleep 1m
+done

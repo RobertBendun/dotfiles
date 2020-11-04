@@ -50,5 +50,5 @@ fi
 
 nitrogen --restore &
 xcompmgr &
-dwmstatus &
+dwmstatus-loop &
 exec dwm

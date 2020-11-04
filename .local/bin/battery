@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Prints status of each battery in nice visual form. Used for status bar
+
+for bat in /sys/class/power_supply/BAT?; do
+	capacity=$(cat "$bat/capacity")
+	status=$(cat "$bat/status")
+
+	case "$status" in
+		"Discharging") chrg="▼" ;;
+		"Full")        chrg="◆" ;;
+		*)             chrg="▲" ;;
+	esac
+
+	printf "%s %s%%\n" "$chrg" "$capacity"
+done
+

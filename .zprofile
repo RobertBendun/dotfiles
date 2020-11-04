@@ -15,6 +15,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 export LESSHISTFILE="-"

@@ -1,9 +1,10 @@
-padding:
-  x: 5px
-  y: 5px
-
 window:
   dynamic_title: true
+  padding:
+    x: 10
+    y: 10
+
+background_opacity: 0.8
 
 class:
   # Application instance name
