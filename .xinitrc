@@ -50,5 +50,5 @@ fi
 
 nitrogen --restore &
 xcompmgr &
-dwmstatus-loop &
+dwmblocks & # my custom build of dwmblocks
 exec dwm
