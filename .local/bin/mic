@@ -17,14 +17,8 @@ printformat() {
 }
 
 case $1 in
-	toggle)
-		togglemute
-		;;
-
-	fmt)
-		printformat
-		;;
-
+	toggle) togglemute ;;
+	fmt) printformat ;;
 	*)
 		cat << END
 mic is a script for simple microphone management with PulseAudio
