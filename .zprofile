@@ -26,6 +26,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export PGDATA="${XDG_DATA_HOME:-$HOME/.local/share}/postgresql/"
 
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Start X Server if on tty 1
 [[ $(fgconsole 2> /dev/null) == 1 ]] && exec startx -- vt1

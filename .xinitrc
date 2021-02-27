@@ -48,7 +48,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-nitrogen --restore &
-xcompmgr &
+xsetroot -solid '#34495e'
+# xcompmgr &
+dxhd -b &
 dwmblocks & # my custom build of dwmblocks
 exec dwm

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Some commands that are useful but too long to remember
+alias ports="ss --listening --tcp --udp --all --numeric"
+
 # Add verbosity to commands
 alias cp="cp -iv"
 alias mv="mv -iv"
@@ -13,7 +16,7 @@ alias ccat="highlight --out-format=ansi"
 # Add alternatives for builtins
 alias ..="cd .."
 alias ...="cd ../.."
-alias ls="exa -ahl --color=always --group-directories-first"
+alias ls="exa -hl --color=always --group-directories-first"
 alias sudo="doas --"
 alias vim="nvim"
 alias vi="vim"

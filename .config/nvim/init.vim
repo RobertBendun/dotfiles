@@ -1,3 +1,5 @@
+let mapleader=","
+
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -8,9 +10,11 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Code completion considered bloat
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -41,9 +45,11 @@ autocmd InsertEnter * norm zz
 set clipboard+=unnamedplus
 
 " Delete all trailing whitespace and newlines at the end of the file
-
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * %s/\n\+\%$//e
 
 " Fix file types
 autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+" Nerd tree
+map <leader>n :NERDTreeToggle<CR>
