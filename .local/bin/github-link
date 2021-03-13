@@ -1,0 +1,8 @@
+#!/bin/sh
+
+branch=$(git branch --show-current)
+file=$(realpath $1 | sed "s\$$(git rev-parse --show-toplevel)\$\$")
+
+git remote -v | cut -f2- | \
+	sed -e 's_\.git_'"/$branch$file"_ \
+		-e 's_git@github.com:_https://raw.githubusercontent.com/_'
