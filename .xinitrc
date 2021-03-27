@@ -50,6 +50,6 @@ fi
 
 xsetroot -solid '#34495e'
 # xcompmgr &
-dxhd -b &
-dwmblocks & # my custom build of dwmblocks
+# daxhd -b &
+# dwmblocks & # my custom build of dwmblocks
 exec dwm
