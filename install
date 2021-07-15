@@ -1,0 +1,7 @@
+#!/bin/sh
+
+Dotfiles="$HOME/repos/dotfiles"
+
+pushd "$Dotfiles"
+stow -t "$HOME" main
+popd

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Some commands that are useful but too long to remember
+alias ports="ss --listening --tcp --udp --all --numeric"
+
+# Add verbosity to commands
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+
+# Add colors
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+
+# Add alternatives for builtins
+alias ..="cd .."
+alias ...="cd ../.."
+alias ls="exa -hl --color=always --group-directories-first"
+alias sudo="doas --"
+alias vim="nvim"
+alias vi="vim"
+alias v="vim"
+
+# Main directories
+alias uam="cd $HOME/wmi"
+alias dotfiles="cd $HOME/repos/dotfiles"
