@@ -17,11 +17,15 @@ alias ccat="highlight --out-format=ansi"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ls="exa -hl --color=always --group-directories-first"
+alias la="ls -a"
 alias sudo="doas --"
 alias vim="nvim"
 alias vi="vim"
 alias v="vim"
 
+
 # Main directories
 alias uam="cd $HOME/wmi"
 alias dotfiles="cd $HOME/repos/dotfiles"
+
+alias cl="cat ~/terminy | ~/dev/as-cal/as-cal"

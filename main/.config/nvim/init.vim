@@ -23,6 +23,9 @@ Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 colorscheme gruvbox
+" Disable background
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+
 set encoding=utf-8
 set hidden
 set ignorecase
@@ -39,15 +42,17 @@ set tabstop=2
 set termguicolors
 set noerrorbells
 set scrolloff=8
-set signcolumn=yes
+set signcolumn=no
+set foldcolumn=0
 
 set noswapfile
 set nobackup
 set undodir=~/.cache/vim/undodir
 set undofile
 
-
 syntax on
+
+" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 " Autocompletion
 set wildmode=longest,list,full

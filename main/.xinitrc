@@ -41,6 +41,6 @@ fi
 xsetroot -solid '#34495e'
 # xcompmgr &
 setxkbmap pl
-xwallpaper --zoom .config/wall.png
+xwallpaper --zoom .config/wall.jpg
 dwmblocks & # my custom build of dwmblocks
 exec dwm

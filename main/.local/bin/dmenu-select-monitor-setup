@@ -1,0 +1,51 @@
+#!/bin/sh
+
+case "$(mons | grep Monitors | cut -d' ' -f2-)" in
+	1)
+		# Make sure that we are outputing on builtin monitor
+		xrandr --output 'HDMI2' --off --output eDP1 --auto
+		exit
+		;;
+	2)
+		;;
+	*) exit
+esac
+
+ask() {
+	dmenu -i -l 5 -p "$@"
+}
+
+onexpand() {
+	case $(ask "Expand to which side?" << EOM
+Left
+Right
+Top
+Bottom
+EOM
+	) in
+		L*) mons -e left ;;
+		R*) mons -e right ;;
+		T*) mons -e top ;;
+		B*) mons -e bottom ;;
+	esac
+}
+
+case $(ask "Setup second monitor" << EOM
+Expand Primary to Secondary
+Only Primary
+Only Secondary
+Duplicate Primary
+Mirror Primary
+EOM
+) in
+	'Expand Primary to Secondary')
+		onexpand
+		;;
+
+	'Duplicate Primary') mons -d ;;
+	'Mirror Primary')    mons -m ;;
+	'Only Primary')      mons -o ;;
+	'Only Secondary')    mons -s ;;
+esac
+
+dmenu-select-audio

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case "$(printf "Shutdown\nRestart\nKill dwm" | dmenu)" in
+	Shutdown)
+		poweroff
+		;;
+	Restart)
+		reboot
+		;;
+	"Kill dwm")
+		killall dwm
+		;;
+esac
