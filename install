@@ -5,3 +5,7 @@ Dotfiles="$HOME/repos/dotfiles"
 pushd "$Dotfiles"
 stow -t "$HOME" main
 popd
+
+pushd slstatus
+sudo make clean install
+popd

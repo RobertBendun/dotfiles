@@ -3,7 +3,8 @@
 # Enable colors and set prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST
-export PS1='λ%f [%F{magenta}%1~%f]$(echo $LastCommandExecutionTime) %F{red}>%F{yellow}>%F{green}>%f '
+# export PS1='$(ps1 "$?" "$LastCommandExecutionTime")'
+export PS1='λ%f [%F{magenta}%1~%f] %F{red}>%F{yellow}>%F{green}>%f '
 
 # Automatically cd into typed directory
 setopt autocd
@@ -61,7 +62,7 @@ command-start-hook() {
 
 command-end-hook() {
 	if [ -n $CommandStartedAt ]; then
-		LastCommandExecutionTime=$(pptimediff $(date +%s) $CommandStartedAt)
+		LastCommandExecutionTime="$(date +%s) $CommandStartedAt"
 		export CommandStartedAt=
 	fi
 }
@@ -69,8 +70,5 @@ command-end-hook() {
 # Add aliases
 [ -f $HOME/.config/aliases ] && source $HOME/.config/aliases
 
-# Syntax highlightning
+# Syntax highlightning#
 # source $HOME/downloads/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
-# add-zsh-hook preexec command-start-hook
-# add-zsh-hook precmd command-end-hook

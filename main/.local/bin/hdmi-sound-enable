@@ -24,4 +24,4 @@ for OUTPUT in $(cd "$CARD_PATH" && echo card*); do
   fi
 done
 echo selecting output $AUDIO_OUTPUT
-sudo -u "$USER_NAME" pactl --server "$PULSE_SERVER" set-card-profile 0 output:$AUDIO_OUTPUT+input:analog-stereo
+pactl --server "$PULSE_SERVER" set-card-profile 0 output:$AUDIO_OUTPUT+input:analog-stereo

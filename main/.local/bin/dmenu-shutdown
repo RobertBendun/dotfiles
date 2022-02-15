@@ -2,10 +2,10 @@
 
 case "$(printf "Shutdown\nRestart\nKill dwm" | dmenu)" in
 	Shutdown)
-		poweroff
+		sudo poweroff
 		;;
 	Restart)
-		reboot
+		sudo reboot
 		;;
 	"Kill dwm")
 		killall dwm

@@ -1,7 +1,9 @@
 #!/bin/zsh
 
 # Add ~/.local/bin
-export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
+export PATH="$PATH:$HOME/.ghcup/bin:$HOME/.local/share/gem/ruby/3.0.0/bin;$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
+
+export PATH="$PATH:$HOME/repos/vowpal_wabbit/build/vowpalwabbit"
 
 # Default programs
 export EDITOR="nvim"

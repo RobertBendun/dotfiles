@@ -29,8 +29,9 @@ case "$(printf "Edit configs or scripts (WIP)\nWatch videos" | prompt -p "What d
 			ln -s "XDG_CONFIG_HOME" "$XDG_CACHE_HOME/unisel/"
 			ln -s "~/.local/bin" "$XDG_CACHE_HOME/unisel/"
 		fi
-		main "$XDG_CACHE_HOME/unisel" $EDITOR \
-			-true
+
+		main ~/.config/ $EDITOR \
+			-type f -depth 3
 		;;
 
 	Watch*)
