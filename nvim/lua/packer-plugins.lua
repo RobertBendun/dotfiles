@@ -21,4 +21,10 @@ return require('packer').startup(function()
 	-- Distraction free mode
 	-- use "junegunn/limelight.vim" -- dont work with gruvbox, don't care why yet
 	use "junegunn/goyo.vim"
+
+	-- Fuzzy finder
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
 end)
