@@ -1,11 +1,6 @@
 #!/bin/sh
 
-Dotfiles="$HOME/repos/dotfiles"
+Config="${XDG_CONFIG_HOME:-$HOME/.config/}"
 
-pushd "$Dotfiles"
-stow -t "$HOME" main
-popd
+stow -t "$Config/nvim" nvim
 
-pushd slstatus
-sudo make clean install
-popd

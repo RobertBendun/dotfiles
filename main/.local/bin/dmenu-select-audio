@@ -1,4 +1,0 @@
-#!/bin/sh
-
-UserId=$(id -u "$USER")
-Card=
