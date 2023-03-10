@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+find "$@" -type f -exec wc -l {} ';' | awk '
+	{ total += $1; ++count }
+	END { print (total / count) " lines (" count " files)" }
+'

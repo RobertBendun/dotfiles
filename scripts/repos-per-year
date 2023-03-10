@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Lists how many repositories registered github user have made in given year
+# and what avarage is
+
+gh repo list --json createdAt --limit 1000 \
+	| jq -c '.[]|[.createdAt,.name]|@csv' -r \
+	| awk -F'[,"-]' '{c[$2] += 1} END { for (x in c) { print(x ": " c[x]); total += c[x]; len += 1}; print("Avg:  " total/len) }'
+
