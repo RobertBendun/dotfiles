@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 # XDG Directories enforcement
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
@@ -22,9 +18,13 @@ export EDITOR=nvim
 export TERMINAL=konsole
 export BROWSER=firefox
 
+
 source "$HOME/.config/aliases"
 
 # Make history infinite
 HISTSIZE=
 HISTFILESIZE=
 
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+fi
