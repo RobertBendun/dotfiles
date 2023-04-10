@@ -10,7 +10,13 @@ export GHCUP_USE_XDG_DIRS=true
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
+# System settings
 export PATH="$PATH:$HOME/.local/bin/"
+export LANG="en_US.UTF-8"
+
+# TODO: This may be not a best solution, since gettext can support priority lists or something
+# Needs to research this further: https://www.gnu.org/software/gettext/manual/gettext.html#Locale-Environment-Variables
+export LANGUAGE="en_US"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -19,7 +25,6 @@ PS1='\W\$ '
 export EDITOR=nvim
 export TERMINAL=konsole
 export BROWSER=firefox
-
 
 source "$HOME/.config/aliases"
 
