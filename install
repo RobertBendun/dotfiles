@@ -1,6 +1,0 @@
-#!/bin/sh
-
-Config="${XDG_CONFIG_HOME:-$HOME/.config/}"
-
-stow -t "$Config/nvim" nvim
-

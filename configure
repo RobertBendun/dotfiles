@@ -1,0 +1,89 @@
+#!/bin/sh
+
+set -e -o pipefail
+
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config/}"
+
+if command -v pacman >/dev/null; then
+	PACKAGE_MANAGER=pacman
+elif command -v apt >/dev/null; then
+	PACKAGE_MANAGER=apt
+else
+	echo "FAIL: Unknown package manager"
+fi
+
+unreachable() {
+	echo "FAIL: $1 should be unreachable"
+}
+
+install_packer() {
+	dst="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
+	if [ ! -e "${dst}" ]; then
+		git clone --depth 1 https://github.com/wbthomason/packer.nvim "${dst}"
+	fi
+}
+
+install_nvim() {
+	case ${PACKAGE_MANAGER} in
+		apt)
+			sudo apt install software-properties-common -y
+			sudo add-apt-repository ppa:neovim-ppa/stable
+			sudo apt update
+			sudo apt install neovim fzf ripgrep -y
+			;;
+
+		pacman)
+			sudo pacman -S neovim fzf ripgrep --noconfirm
+			;;
+
+		*)
+			unreachable "install_nvim"
+	esac
+}
+
+config_nvim() {
+	mkdir -p "${CONFIG}/nvim"
+	stow -t "${CONFIG}/nvim" nvim
+}
+
+nvim() {
+	install_nvim
+	install_packer
+	config_nvim
+}
+
+config_bash() {
+	cp -v "./bash/.bashrc" "$HOME/"
+}
+
+config_tmux() {
+	mkdir -p "${CONFIG}/tmux"
+	stow -t "${CONFIG}/tmux" tmux
+}
+
+COMMAND="$1"
+if [ -z "${COMMAND}" -o "${COMMAND}" = "help" ]; then
+	echo "No command specified. Available ones are: "
+	echo "  config_bash - configure bash"
+	echo "  config_tmux - configure tmux"
+	echo "  nvim - install neovim, it's dependencies and configure it"
+	echo "    config_nvim - configure neovim"
+	echo "    install_nvim - install neovim, ripgrep and fzf"
+	echo "    install_packer - install plugin manager for neovim"
+	exit 2
+fi
+
+shift
+
+case "${COMMAND}" in
+	config_bash)    config_bash ;;
+	config_nvim)    config_nvim ;;
+	config_tmux)    config_tmux ;;
+	install_nvim)   install_nvim ;;
+	install_packer) install_packer ;;
+	nvim)           nvim ;;
+	*)
+		echo "FAIL: Unrecognized command: ${COMMAND}"
+		exit 2
+		;;
+esac
