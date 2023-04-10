@@ -10,6 +10,8 @@ export GHCUP_USE_XDG_DIRS=true
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
+export PATH="$PATH:$HOME/.local/bin/"
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

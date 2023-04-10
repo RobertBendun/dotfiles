@@ -1,8 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e -o pipefail
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config/}"
+# Switch working directory to script location
+cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config/}"
+SCRIPTS="$HOME/.local/bin"
 
 if command -v pacman >/dev/null; then
 	PACKAGE_MANAGER=pacman
@@ -53,7 +57,7 @@ nvim() {
 }
 
 config_bash() {
-	cp -v "./bash/.bashrc" "$HOME/"
+	ln -svf "$(realpath "./bash/.bashrc")" "$HOME/"
 }
 
 config_tmux() {
@@ -61,11 +65,16 @@ config_tmux() {
 	stow -t "${CONFIG}/tmux" tmux
 }
 
+install_scripts() {
+	stow -t "${SCRIPTS}" scripts
+}
+
 COMMAND="$1"
 if [ -z "${COMMAND}" -o "${COMMAND}" = "help" ]; then
 	echo "No command specified. Available ones are: "
 	echo "  config_bash - configure bash"
 	echo "  config_tmux - configure tmux"
+	echo "  install_scripts - install scripts to ~/.local/bin"
 	echo "  nvim - install neovim, it's dependencies and configure it"
 	echo "    config_nvim - configure neovim"
 	echo "    install_nvim - install neovim, ripgrep and fzf"
@@ -76,12 +85,13 @@ fi
 shift
 
 case "${COMMAND}" in
-	config_bash)    config_bash ;;
-	config_nvim)    config_nvim ;;
-	config_tmux)    config_tmux ;;
-	install_nvim)   install_nvim ;;
-	install_packer) install_packer ;;
-	nvim)           nvim ;;
+	config_bash)     config_bash ;;
+	config_nvim)     config_nvim ;;
+	config_tmux)     config_tmux ;;
+	install_nvim)    install_nvim ;;
+	install_packer)  install_packer ;;
+	install_scripts) install_scripts ;;
+	nvim)            nvim ;;
 	*)
 		echo "FAIL: Unrecognized command: ${COMMAND}"
 		exit 2
