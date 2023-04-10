@@ -22,9 +22,19 @@ return require('packer').startup(function()
 	-- use "junegunn/limelight.vim" -- dont work with gruvbox, don't care why yet
 	use "junegunn/goyo.vim"
 
+	use "ziglang/zig.vim"
+
 	-- Fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+
+	-- Treesitter
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+
+	use 'vmchale/dhall-vim'
 end)

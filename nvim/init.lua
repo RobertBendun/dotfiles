@@ -16,6 +16,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.hidden = true
 vim.opt.incsearch = true
+vim.opt.hlsearch = false
 vim.opt.ignorecase = true -- Ignore case when searching
 vim.opt.smartcase = true  -- unless there is uppercase letter in search
 vim.opt.mouse = "n" -- Support mouse in normal mode
@@ -42,3 +43,18 @@ end})
 -- Telescope keymaps
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { noremap = true })
+
+-- Treesitter syntax highlighting improvements
+
+require('nvim-treesitter.configs').setup {
+	ensure_installed = { "c", "cpp", "lua" },
+	sync_install = false,
+	auto_install = true,
+	highlight = { enable = true, }
+}
+
+vim.filetype.add({
+	extension = {
+		mq = 'musique'
+	}
+})

@@ -18,23 +18,27 @@ local function on_attach(client, bufnr)
 end
 
 require('lspconfig').clangd.setup { on_attach = on_attach }
+require('lspconfig').pyright.setup { on_attach = on_attach }
+require('lspconfig').rust_analyzer.setup { on_attach = on_attach }
+require('lspconfig').gopls.setup { on_attach = on_attach }
+require('lspconfig').dhall_lsp_server.setup { on_attach = on_attach }
 
-require('lspconfig').sumneko_lua.setup {
-	on_attach = on_attach,
-	settings = {
-		Lua = {
-			diagnostics = { enable = true, globals = {
-				"vim", "describe", "it", "before_each", "after_each" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-				}
-			}
-		}
-	}
-}
+-- require('lspconfig').sumneko_lua.setup {
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = { enable = true, globals = {
+-- 				"vim", "describe", "it", "before_each", "after_each" },
+-- 			},
+-- 			workspace = {
+-- 				library = {
+-- 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+-- 					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+-- 				}
+-- 			}
+-- 		}
+-- 	}
+-- }
 
 
 
