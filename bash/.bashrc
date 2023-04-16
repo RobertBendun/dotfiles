@@ -1,4 +1,7 @@
 # XDG Directories enforcement
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config/"
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export GOPATH="$XDG_DATA_HOME"/go
