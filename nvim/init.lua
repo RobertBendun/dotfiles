@@ -55,6 +55,7 @@ require('nvim-treesitter.configs').setup {
 
 vim.filetype.add({
 	extension = {
-		mq = 'musique'
+		mq = 'musique',
+		jenkinsfile = 'groovy'
 	}
 })

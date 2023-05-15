@@ -70,7 +70,7 @@ install_scripts() {
 }
 
 COMMAND="$1"
-if [ -z "${COMMAND}" -o "${COMMAND}" = "help" ]; then
+if [ -z "${COMMAND}" ] || [ "${COMMAND}" = "help" ]; then
 	echo "No command specified. Available ones are: "
 	echo "  config_bash - configure bash"
 	echo "  config_tmux - configure tmux"
