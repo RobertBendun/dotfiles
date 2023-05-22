@@ -48,6 +48,12 @@ export HISTFILE="${XDG_STATE_HOME}"/bash/history
 HISTSIZE=
 HISTFILESIZE=
 
+# Make Ansible usable
+export ANSIBLE_NOCOWS=1
+
+# Why this doesn't work on Arch by default I don't know
+export LIBVIRT_DEFAULT_URI=qemu:///system
+
 if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
 fi
