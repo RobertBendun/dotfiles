@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Get random repository of registered Github user
+
+HOW_MANY="$1"
+if [ -z "$1" ]; then
+	HOW_MANY=1
+fi
+
+gh repo list --json name,description --limit 1000 | jq -c '.[]|[.name,.description]|@tsv' -r | shuf -n "${HOW_MANY}"
