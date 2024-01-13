@@ -1,21 +1,13 @@
 local cmp = require "cmp"
 
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
 cmp.setup {
-	mapping = {
-		["<Tab>"] = function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end,
-		["<S-Tab>"] = function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end,
+	mapping = cmp.mapping.preset.insert({
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-Space>"] = cmp.mapping.complete(),
+		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<C-y>"] = cmp.mapping(
 			cmp.mapping.confirm {
 				behavior = cmp.ConfirmBehavior.Insert,
@@ -23,7 +15,7 @@ cmp.setup {
 			},
 			{ "i", "c" }
 		),
-	},
+	}),
 	snippet = {
 		expand = function(args)
 			require('luasnip').lsp_expand(args.body)
@@ -36,9 +28,8 @@ cmp.setup {
 		{ name = "path" },
 		{ name = "buffer" },
 	},
-	experimental = {
-		native_menu = false,
-		ghost_test = false,
+	formatting = {
+		with_text = true,
 	}
 }
 

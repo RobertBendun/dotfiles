@@ -26,7 +26,7 @@ return require('packer').startup(function()
 
 	-- Fuzzy finder
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
@@ -36,5 +36,17 @@ return require('packer').startup(function()
 		run = ':TSUpdate'
 	}
 
+	use {
+		'scalameta/nvim-metals',
+		requires = { "nvim-lua/plenary.nvim" }
+	}
+
 	use 'vmchale/dhall-vim'
+
+	use {
+		'stevearc/oil.nvim',
+	   config = function()
+      require("oil").setup()
+    end,
+	}
 end)

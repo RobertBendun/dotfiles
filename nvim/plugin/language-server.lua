@@ -3,6 +3,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<space>dl', '<cmd>Telescope diagnostic<cr>', opts)
 
 -- This function is executed after language server attaches
 -- to the current buffer
@@ -17,12 +18,15 @@ local function on_attach(client, bufnr)
 	vim.keymap.set('n', 'gr',        vim.lsp.buf.references,     bufopts)
 end
 
-require('lspconfig').clangd.setup { on_attach = on_attach }
-require('lspconfig').pyright.setup { on_attach = on_attach }
-require('lspconfig').rust_analyzer.setup { on_attach = on_attach }
-require('lspconfig').gopls.setup { on_attach = on_attach }
-require('lspconfig').dhall_lsp_server.setup { on_attach = on_attach }
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+require('lspconfig').clangd.setup           { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').pylsp.setup            { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').rust_analyzer.setup    { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').gopls.setup            { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').dhall_lsp_server.setup { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').ruby_ls.setup          { capabilities = capabilities, on_attach = on_attach }
+require('lspconfig').tsserver.setup         { capabilities = capabilities, on_attach = on_attach }
 -- require('lspconfig').sumneko_lua.setup {
 -- 	on_attach = on_attach,
 -- 	settings = {
